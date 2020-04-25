@@ -1,15 +1,15 @@
 'use strict'; //this is going to force it into a strict mode
 
 require('dotenv').config() //is going to load a dotenv file
-const express = require('express')
-const app = express()//calling the function required from express
-const port = process.env.PORT || 3000 //defining the port that is going to be used
-const bodyParser = require ('body-parser')// is going to be used by the express server to parse the incoming body of the request
-const mongoose = require('mongoose')//being able to handle the relationship between the models and mongodb server
+var express = require('express')
+var app = express()//calling the function required from express
+var port = process.env.PORT || 3000 //defining the port that is going to be used
+var bodyParser = require ('body-parser')// is going to be used by the express server to parse the incoming body of the request
+var mongoose = require('mongoose')//being able to handle the relationship between the models and mongodb server
 
 
-const routes = require('./routes')
-const cors =  require('./cors')//it handles the security for cross site scripting
+var routes = require('./routes')
+var cors =  require('./cors')//it handles the security for cross site scripting
 
 
 mongoose.Promise = global.Promise; //this is the global namespace
