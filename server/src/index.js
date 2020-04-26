@@ -12,9 +12,9 @@ var routes = require('./routes')
 var cors =  require('./cors')//it handles the security for cross site scripting
 
 
-mongoose.Promise = global.Promise; //this is the global namespace
-mongoose.connect('mongodb+srv://test:ccttestuser@cluster0-0g4sv.mongodb.net/test?retryWrites=true&w=majority');
-mongoose.set('useFindAndModify', false);//to get rid of the warning while compiling
+mongoose.Promise = global.Promise //this is the global namespace
+mongoose.connect('mongodb://localhost/timepieces', { useNewUrlParser: true })
+mongoose.set('useFindAndModify', false)//to get rid of the warning while compiling
 // 'mongodb+srv://test:ccttestuser@cluster0-0g4sv.mongodb.net/test?retryWrites=true&w=majority'
 // process.env.MONGODB_URL
 mongoose.connection.on('error', (err) => { 
@@ -32,7 +32,8 @@ app.use(bodyParser.urlencoded({ extended : true}))
 app.use(bodyParser.json())//here Json is going to be used
 
 cors(app)// here the app will be called. Is the cors call where we pass the app to the cors file
-//routes(app) passing the app to the routes
+routes(app) //passing the app to the routes
+
 
 
 app.listen(port, function(err){
